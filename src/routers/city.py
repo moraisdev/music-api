@@ -1,9 +1,7 @@
 from typing import Union
-from fastapi import FastAPI
+from settings.configuration import router
 
-app = FastAPI()
-
-@app.get("/music/")
+@router.get("/music/")
 async def read_item(city: Union[str,None] = None, lat: Union[str,None] = None, lon: Union[str,None]= None):
     
     return {
