@@ -1,10 +1,14 @@
-from src.settings import KEY_API_OPEN_WEATHER, router
+from typing import Union
+from fastapi import FastAPI
 
-router.post("/city-coords")
-def get_temp_from_lat_long():
-    url = f"http://api.openweathermap.org/data/2.5/weather?{lat}&{long}&appid={KEY_API_OPEN_WEATHER}"
+app = FastAPI()
 
+@app.get("/music/")
+async def read_item(city: Union[str,None] = None, lat: Union[str,None] = None, lon: Union[str,None]= None):
+    
+    return {
+        "city": city,
+        "latitud": lat,
+        "longitud": lon
+    }
 
-router.post("/city-name")
-def get_temp_from_city():
-    return "get_playlist"
